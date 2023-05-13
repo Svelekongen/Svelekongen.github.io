@@ -31,7 +31,7 @@ img{
 
 }
 
-p{
+.imageText{
     padding: 30px;
 }
 
@@ -43,11 +43,11 @@ p{
     flex-direction: column;
 }
 
-#mainDiv > div{
+#mainDiv > .block{
     flex-direction: row;
 }
 
-#mainDiv > div:nth-child(even) {
+#mainDiv > .block:nth-child(even) {
     flex-direction: row-reverse;
   }
 
@@ -55,10 +55,10 @@ p{
     .block{
         flex-direction: column;
     }
-    #mainDiv > div{
+    #mainDiv > .block{
         flex-direction: column;
     }
-    #mainDiv > div:nth-child(even) {
+    #mainDiv > .block:nth-child(even) {
         flex-direction: column;
       }
 }
