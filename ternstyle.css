@@ -1,0 +1,44 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: system-ui;
+}
+
+#hero {
+  background-color: #3f638b;
+  background-image: url(images/arctictern/y50a9zhs.png);
+  background-size: cover;
+  color: white;
+  text-align: center;
+  padding-top: 250px;
+  padding-bottom: 250px;
+}
+
+#summaryCont {
+  display: flex;
+  flex-direction: row;
+  padding-inline: 12.5%;
+  margin-top: 3em;
+}
+
+p {
+  padding: 0;
+  margin: 0;
+}
+
+.summaryBox {
+  flex-basis: 0;
+  flex-grow: 1;
+  justify-content: center;
+}
+
+.facts {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-bottom: 2em;
+}
+
+.facts > img {
+  height: 50px;
+}
