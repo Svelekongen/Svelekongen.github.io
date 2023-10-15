@@ -5,25 +5,42 @@ body {
 }
 
 #hero {
-  background-color: #3f638b;
-  background-image: url(images/arctictern/y50a9zhs.png);
-  background-size: cover;
-  color: white;
   text-align: center;
-  padding-top: 250px;
-  padding-bottom: 250px;
+}
+
+img {
+  width: 100vw;
+}
+
+.navClass {
+  margin: 0;
+  padding: 0;
+  margin-top: 3em;
+  margin-bottom: 3em;
+
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.navLink {
+  text-decoration: none;
+  font-size: 1.2rem;
+
+  display: flex;
+  flex-direction: column;
+  margin-inline: 2em;
+}
+
+.navLink:hover {
+  color: green;
 }
 
 #summaryCont {
   display: flex;
-  flex-direction: row;
-  padding-inline: 12.5%;
-  margin-top: 3em;
-}
-
-p {
-  padding: 0;
-  margin: 0;
+  margin-inline: 12.5%;
+  margin-top: 5em;
 }
 
 .summaryBox {
@@ -31,13 +48,40 @@ p {
   flex-grow: 1;
 }
 
-.facts {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  margin-bottom: 2em;
+.summaryBox p {
+  font-size: 1.2em;
+  padding-right: 5em;
 }
 
-.facts > img {
-  height: 50px;
+#quickFacts {
+  color: white;
+  background-color: #277ab2;
+  border-radius: 30px;
+
+  max-width: 350px;
+}
+
+.facts {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+
+  padding-right: 2em;
+}
+
+.facts i {
+  padding-left: 1em;
+}
+
+#imagesCont {
+  margin-top: 5em;
+  display: flex;
+}
+
+.imageBox {
+  width: 100vw;
+}
+
+.imageBox img {
+  width: 100%;
 }
