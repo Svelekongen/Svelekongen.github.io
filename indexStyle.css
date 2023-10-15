@@ -1,56 +1,60 @@
 @font-face {
-    font-family: roboto;
-    src: url(/Roboto/Roboto-Black.ttf);
-    src: url(/Roboto/Roboto-Bold.ttf);
-    src: url(/Roboto/Roboto-Regular.ttf);
+  font-family: roboto;
+  src: url(/Roboto/Roboto-Black.ttf);
+  src: url(/Roboto/Roboto-Bold.ttf);
+  src: url(/Roboto/Roboto-Regular.ttf);
 }
 
-html, body{
-    height: 100%;
-    margin: 0;
+html,
+body {
+  height: 100%;
+  margin: 0;
 }
 
 body {
-    background-color: #FFF8F0;
-    font-family: roboto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  background-color: #fff8f0;
+  font-family: roboto;
+  justify-content: center;
+  align-items: center;
 }
 
-div{
-    height: 500px;
-    width: 500px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-h1{
-    margin: 0;
+#buttonCont {
+  flex-direction: row;
 }
 
-button{
-    margin-top: 100px;
+h1 {
+  margin: 0;
+  margin-top: 250px;
+}
+
+button {
+  margin-top: 100px;
+  margin-inline: 1em;
 }
 
 .button {
-    display: inline-block;
-    border: none;
-    background-color: #4569e1;
-    color: white;
-    padding: 15px 30px;
-    font-size: 16px;
-    font-weight: bold;
-    text-align: center;
-    text-decoration: none;
-    cursor: pointer;
-    border-radius: 50px;
-    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.3s ease;
-  }
-  
-  .button:hover {
-    background-color: #3f5cb9;
-  }
+  display: inline-block;
+  border: none;
+  background-color: #4569e1;
+  color: white;
+  padding: 15px 30px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 50px;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #3f5cb9;
+}
