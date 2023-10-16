@@ -1,0 +1,34 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: system-ui;
+}
+
+#hero {
+  text-align: center;
+}
+
+.navClass {
+  margin: 0;
+  padding: 0;
+  margin-top: 3em;
+  margin-bottom: 3em;
+
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.navLink {
+  text-decoration: none;
+  font-size: 1.2rem;
+
+  display: flex;
+  flex-direction: column;
+  margin-inline: 2em;
+}
+
+.navLink:hover {
+  color: green;
+}

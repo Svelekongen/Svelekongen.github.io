@@ -1,0 +1,68 @@
+#coatsCont {
+  background-color: #f3f7fb;
+}
+
+p {
+  text-align: start;
+  font-size: 1.2em;
+}
+
+.conts {
+  text-align: center;
+  padding-inline: 12.5%;
+  padding-top: 2em;
+  padding-bottom: 5em;
+}
+
+.flexCont {
+  display: flex;
+}
+
+.coatsDiv {
+  display: flex;
+  margin-bottom: 5em;
+  align-items: center;
+}
+
+img {
+  width: 400px;
+}
+
+.coatsDiv p {
+  padding-left: 5em;
+  padding-right: 300px;
+}
+
+#callsCont {
+  align-items: center;
+}
+audio {
+  padding-left: 150px;
+}
+
+.callsBox {
+  flex-basis: 0;
+  flex-grow: 1;
+}
+
+#sizeCont {
+  background-color: #f3f7fb;
+}
+
+.facts {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+.facts i {
+  padding-left: 2em;
+}
+
+.colorBox {
+  flex-basis: 0;
+  flex-grow: 1;
+}
+
+.colorBox p {
+  padding-inline: 2em;
+}
