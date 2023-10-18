@@ -41,3 +41,45 @@ p {
 img {
   width: 100%;
 }
+
+.conts h2 {
+  text-align: center;
+}
+
+li {
+  padding-bottom: 1em;
+}
+
+.pu {
+  font-size: 1.2em;
+}
+
+.feeding {
+  background-color: #f3f7fb;
+}
+
+.images {
+  background-color: #f3f7fb;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+@media only screen and (max-width: 950px) {
+  .contsGrid {
+    display: block;
+  }
+
+  .conts {
+    padding-inline: 5%;
+  }
+
+  p {
+    font-size: 1em;
+    text-align: start;
+  }
+
+  .pu {
+    font-size: 1em;
+  }
+}
