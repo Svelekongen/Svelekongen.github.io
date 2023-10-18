@@ -1,0 +1,43 @@
+#globalHabCont {
+  background-color: #f3f7fb;
+  text-align: center;
+}
+
+p {
+  font-size: 1.2em;
+  padding-inline: 2em;
+}
+
+.conts {
+  padding-inline: 12.5%;
+  padding-top: 2em;
+  padding-bottom: 3em;
+}
+
+.contsGrid {
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+}
+
+.gridContMain {
+  grid-column: span 4;
+}
+
+.gridCont1 {
+  grid-column: span 2;
+}
+
+.gridCont2 {
+  grid-column: span 2;
+}
+
+.gridCont3 {
+  grid-column: span 2;
+}
+
+.gridCont4 {
+  grid-column: span 2;
+}
+img {
+  width: 100%;
+}
