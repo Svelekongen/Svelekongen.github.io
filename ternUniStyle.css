@@ -4,31 +4,41 @@ body {
   font-family: system-ui;
 }
 
+h1,
+h2 {
+  margin-top: 0;
+  padding: 10px;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+nav a {
+  text-decoration: none;
+  font-size: 1.2em;
+  color: #333;
+  padding: 10px;
+  display: block;
+  transition: background-color 0.3s;
+}
+
+nav .fa-solid {
+  padding-right: 0.7em;
+}
+
+nav a:hover {
+  background-color: #d1ebff; /* Slightly darker blue for hover effect */
+}
+
 #hero {
+  padding: 20px 0;
   text-align: center;
 }
 
 .navClass {
-  margin: 0;
-  padding: 0;
-  margin-top: 3em;
-  margin-bottom: 3em;
-
-  list-style: none;
   display: flex;
   justify-content: center;
-  width: 100%;
-}
-
-.navLink {
-  text-decoration: none;
-  font-size: 1.2rem;
-
-  display: flex;
-  flex-direction: column;
-  margin-inline: 2em;
-}
-
-.navLink:hover {
-  color: green;
+  gap: 15px;
 }
