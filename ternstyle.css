@@ -10,7 +10,8 @@ p {
 
 iframe {
   width: 500px;
-  height: 406px;
+  height: 300px;
+  max-width: 100%;
 }
 
 #summaryCont {
@@ -29,19 +30,7 @@ iframe {
 }
 
 .flexCont1 p {
-  padding-inline: 150px;
-}
-
-@media only screen and (min-width: 1300px) {
-  .flexCont1 {
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-  }
-  .flexCont1 p {
-    padding-inline: 0;
-    padding-right: 3em;
-  }
+  padding: 0;
 }
 
 .flexCont {
@@ -60,7 +49,7 @@ iframe {
 }
 
 .factsCont {
-  flex-direction: row-reverse;
+  flex-direction: column;
 }
 
 .factImages {
@@ -68,4 +57,27 @@ iframe {
   text-align: start;
   margin: 0;
   padding: 0;
+}
+
+@media only screen and (min-width: 1300px) {
+  .flexCont1 {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+  }
+
+  .flexCont1 p {
+    padding-inline: 0;
+    padding-right: 3em;
+  }
+
+  .factsCont {
+    flex-direction: row-reverse;
+  }
+
+  iframe {
+    width: 500px;
+    height: 406px;
+    max-width: 100%;
+  }
 }
