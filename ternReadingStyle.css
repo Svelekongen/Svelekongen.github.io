@@ -1,0 +1,17 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.paintings {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: space-around;
+}
+
+img {
+  max-width: 40vw;
+  min-width: 300px;
+}
