@@ -68,9 +68,32 @@ audio {
   padding-inline: 2em;
 }
 
+.coatText h2 {
+  text-align: start;
+  font-size: 1.2em;
+  padding-left: 5em;
+}
+
+.superbox p {
+  padding-inline: 5em;
+}
+
+h3 {
+  margin-top: 3em;
+}
+
 @media only screen and (max-width: 950px) {
   .conts {
     padding-inline: 5%;
+  }
+  .coatText h2 {
+    text-align: center;
+    padding-inline: 0;
+  }
+
+  h3 {
+    padding: 0;
+    text-align: center;
   }
 
   p {
@@ -104,5 +127,9 @@ audio {
 
   audio {
     padding: 0;
+  }
+
+  .superbox p {
+    padding-inline: 0;
   }
 }
