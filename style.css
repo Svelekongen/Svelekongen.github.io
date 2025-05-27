@@ -1,0 +1,55 @@
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+span {
+  font-size: 1rem;
+  color: #6b9080;
+  margin-bottom: 2.5rem;
+  letter-spacing: 0.08em;
+  opacity: 0.8;
+}
+
+.mainHeader {
+  color: #4a7266;
+  font-size: 2.8rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.descriptor {
+  color: #567d71;
+  font-size: 1.2rem;
+  margin-bottom: 2.5rem;
+  font-weight: 400;
+  opacity: 0.9;
+  text-align: center;
+}
+
+.button {
+  display: inline-block;
+  padding: 0.9rem 2.2rem;
+  border: none;
+  border-radius: 12px;
+  background: #c7e3db;
+  color: #355c4f;
+  font-size: 1.15rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  box-shadow: 0 2px 12px rgba(100, 120, 110, 0.04);
+  font-family: inherit;
+  font-weight: 500;
+  opacity: 0.96;
+  text-decoration: none;
+  text-align: center;
+}
+
+.button:hover,
+.button:focus {
+  background: #b6dad2;
+  opacity: 1;
+}
