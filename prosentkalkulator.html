@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Percentage Calculator | Ruset.no</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/picnic" />
+    <style>
+      body {
+        background: #e4f4f1;
+        min-height: 100vh;
+      }
+      .container {
+        max-width: 440px;
+        margin: 0 auto;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      h1 {
+        color: #4a7266;
+        margin-bottom: 1.5rem;
+        font-size: 2rem;
+        font-weight: 600;
+        text-align: center;
+      }
+      .card {
+        width: 100%;
+        background: white;
+        border-radius: 1.3em;
+        box-shadow: 0 2px 12px rgba(100, 120, 110, 0.08);
+        padding: 2rem 2rem 1.5rem 2rem;
+      }
+      .result {
+        color: #355c4f;
+        font-size: 1.2rem;
+        font-weight: 500;
+        text-align: center;
+        margin-top: 1.5rem;
+      }
+      .highlight {
+        background: #c7e3db;
+        border-radius: 0.5em;
+        padding: 0 0.45em;
+        color: #283f35;
+        font-weight: bold;
+        font-size: 1.18em;
+        margin: 0 0.1em;
+        display: inline-block;
+      }
+      .formula {
+        background: #f7faf9;
+        padding: 0.6em 1em;
+        margin: 1em 0 0.5em 0;
+        border-radius: 0.8em;
+        color: #567d71;
+        font-size: 0.95em;
+        font-family: monospace;
+        text-align: left;
+      }
+      label {
+        font-weight: 500;
+        color: #567d71;
+      }
+      select,
+      input {
+        margin-bottom: 1.3em;
+      }
+      .picnic-btn {
+        margin-top: 0.3em;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Percentage Calculator</h1>
+      <div class="card">
+        <label for="calc-type">Calculation type</label>
+        <select id="calc-type">
+          <option value="percent-of">What is X% of Y?</option>
+          <option value="percent-what">X is what percent of Y?</option>
+          <option value="percent-change">Percentage increase/decrease</option>
+          <option value="original-value">X is Y% of what?</option>
+          <option value="increase-by-percent">Increase Y by X%</option>
+          <option value="decrease-by-percent">Decrease Y by X%</option>
+          <option value="percent-difference">
+            Percentage difference between X and Y
+          </option>
+        </select>
+
+        <form id="percent-form">
+          <div id="inputs"></div>
+          <button type="submit" class="button picnic-btn">Calculate</button>
+        </form>
+
+        <div class="result" id="result"></div>
+        <div class="formula" id="formula"></div>
+      </div>
+    </div>
+
+    <script>
+      // Input HTML templates for each calculation type
+      const inputTemplates = {
+        "percent-of": `
+        <label for="x">X (%)</label>
+        <input type="number" id="x" step="any" required placeholder="e.g. 15" />
+        <label for="y">Y</label>
+        <input type="number" id="y" step="any" required placeholder="e.g. 200" />
+      `,
+        "percent-what": `
+        <label for="x">X</label>
+        <input type="number" id="x" step="any" required placeholder="e.g. 30" />
+        <label for="y">Y</label>
+        <input type="number" id="y" step="any" required placeholder="e.g. 240" />
+      `,
+        "percent-change": `
+        <label for="x">Initial value (X)</label>
+        <input type="number" id="x" step="any" required placeholder="e.g. 120" />
+        <label for="y">New value (Y)</label>
+        <input type="number" id="y" step="any" required placeholder="e.g. 150" />
+      `,
+        "original-value": `
+        <label for="x">X (the result value)</label>
+        <input type="number" id="x" step="any" required placeholder="e.g. 50" />
+        <label for="y">Y (%)</label>
+        <input type="number" id="y" step="any" required placeholder="e.g. 25" />
+      `,
+        "increase-by-percent": `
+        <label for="y">Value (Y)</label>
+        <input type="number" id="y" step="any" required placeholder="e.g. 200" />
+        <label for="x">Increase by (%)</label>
+        <input type="number" id="x" step="any" required placeholder="e.g. 15" />
+      `,
+        "decrease-by-percent": `
+        <label for="y">Value (Y)</label>
+        <input type="number" id="y" step="any" required placeholder="e.g. 200" />
+        <label for="x">Decrease by (%)</label>
+        <input type="number" id="x" step="any" required placeholder="e.g. 15" />
+      `,
+        "percent-difference": `
+        <label for="x">First value (X)</label>
+        <input type="number" id="x" step="any" required placeholder="e.g. 200" />
+        <label for="y">Second value (Y)</label>
+        <input type="number" id="y" step="any" required placeholder="e.g. 220" />
+      `,
+      };
+
+      // Formula templates for display
+      const formulaTemplates = {
+        "percent-of": "Result = (X / 100) × Y",
+        "percent-what": "Result = (X ÷ Y) × 100%",
+        "percent-change": "Result = ((Y − X) ÷ X) × 100%",
+        "original-value": "Result = X ÷ (Y ÷ 100)",
+        "increase-by-percent": "Result = Y × (1 + (X ÷ 100))",
+        "decrease-by-percent": "Result = Y × (1 − (X ÷ 100))",
+        "percent-difference": "Result = |X − Y| ÷ ((X + Y) ÷ 2) × 100%",
+      };
+
+      const calcTypeSelect = document.getElementById("calc-type");
+      const inputsDiv = document.getElementById("inputs");
+      const resultDiv = document.getElementById("result");
+      const formulaDiv = document.getElementById("formula");
+
+      // Update inputs and formula on type change
+      function updateForm() {
+        const type = calcTypeSelect.value;
+        inputsDiv.innerHTML = inputTemplates[type];
+        formulaDiv.textContent = formulaTemplates[type];
+        resultDiv.textContent = "";
+      }
+
+      calcTypeSelect.addEventListener("change", updateForm);
+
+      // Initial form setup
+      updateForm();
+
+      // Calculation and result rendering
+      document
+        .getElementById("percent-form")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          const type = calcTypeSelect.value;
+          let x = parseFloat(
+            document.getElementById("x")
+              ? document.getElementById("x").value
+              : 0
+          );
+          let y = parseFloat(
+            document.getElementById("y")
+              ? document.getElementById("y").value
+              : 0
+          );
+
+          let result = "";
+          let display = "";
+          let isValid = true;
+
+          function highlight(val, decimals = 2) {
+            if (isNaN(val)) return '<span class="highlight">?</span>';
+            let rounded =
+              Math.round((val + Number.EPSILON) * Math.pow(10, decimals)) /
+              Math.pow(10, decimals);
+            // Don't show .00 for integer results
+            return `<span class="highlight">${
+              Math.abs(rounded % 1) > 0 ? rounded : parseInt(rounded, 10)
+            }</span>`;
+          }
+
+          switch (type) {
+            case "percent-of":
+              result = (x / 100) * y;
+              display = `${x}% of ${y} is ${highlight(result)}`;
+              break;
+            case "percent-what":
+              if (y === 0) {
+                isValid = false;
+                display = "Cannot divide by zero.";
+                break;
+              }
+              result = (x / y) * 100;
+              display = `${x} is ${highlight(result)}% of ${y}`;
+              break;
+            case "percent-change":
+              if (x === 0) {
+                isValid = false;
+                display = "Cannot calculate change from zero.";
+                break;
+              }
+              result = ((y - x) / x) * 100;
+              let direction =
+                result > 0 ? "increase" : result < 0 ? "decrease" : "no change";
+              display = `Change: ${highlight(result)}% (${direction})`;
+              break;
+            case "original-value":
+              if (y === 0) {
+                isValid = false;
+                display = "Cannot divide by zero.";
+                break;
+              }
+              result = x / (y / 100);
+              display = `${x} is ${y}% of ${highlight(result)}`;
+              break;
+            case "increase-by-percent":
+              result = y * (1 + x / 100);
+              display = `${y} increased by ${x}% is ${highlight(result)}`;
+              break;
+            case "decrease-by-percent":
+              result = y * (1 - x / 100);
+              display = `${y} decreased by ${x}% is ${highlight(result)}`;
+              break;
+            case "percent-difference":
+              let avg = (Math.abs(x) + Math.abs(y)) / 2;
+              if (avg === 0) {
+                isValid = false;
+                display = "Cannot calculate difference from zero.";
+                break;
+              }
+              result = (Math.abs(x - y) / avg) * 100;
+              display = `Percentage difference between ${x} and ${y} is ${highlight(
+                result
+              )}%`;
+              break;
+            default:
+              isValid = false;
+              display = "Invalid calculation type.";
+          }
+
+          resultDiv.innerHTML = isValid
+            ? display
+            : `<span style="color:red">${display}</span>`;
+        });
+    </script>
+  </body>
+</html>
