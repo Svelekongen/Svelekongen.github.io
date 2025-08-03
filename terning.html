@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Dice Throw | Ruset.no</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/picnic" />
+    <style>
+      body {
+        background: #e4f4f1;
+        min-height: 100vh;
+      }
+      .container {
+        max-width: 400px;
+        margin: 0 auto;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      h1 {
+        color: #4a7266;
+        margin-bottom: 1.3rem;
+        font-size: 2rem;
+        font-weight: 600;
+        text-align: center;
+      }
+      .card {
+        width: 100%;
+        background: white;
+        border-radius: 1.3em;
+        box-shadow: 0 2px 12px rgba(100, 120, 110, 0.08);
+        padding: 2rem 2rem 1.5rem 2rem;
+        margin-bottom: 2rem;
+      }
+      .dice {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1em;
+        justify-content: center;
+        margin-top: 1em;
+      }
+      .die {
+        background: #c7e3db;
+        color: #355c4f;
+        font-size: 2.2em;
+        width: 2.2em;
+        height: 2.2em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 0.4em;
+        box-shadow: 0 2px 12px rgba(100, 120, 110, 0.07);
+        font-family: monospace;
+        font-weight: bold;
+        user-select: none;
+        transition: transform 0.1s;
+      }
+      .sum {
+        color: #567d71;
+        margin-top: 1em;
+        font-size: 1.25em;
+        text-align: center;
+      }
+      label {
+        font-weight: 500;
+        color: #567d71;
+      }
+      select,
+      input {
+        margin-bottom: 1.3em;
+      }
+      .picnic-btn {
+        margin-top: 0.3em;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Dice Throw</h1>
+      <div class="card">
+        <form id="dice-form">
+          <label for="dice">Number of dice</label>
+          <input type="number" id="dice" min="1" max="10" value="2" required />
+
+          <label for="sides">Sides per die</label>
+          <select id="sides">
+            <option value="6">6 (standard)</option>
+            <option value="4">4</option>
+            <option value="8">8</option>
+            <option value="10">10</option>
+            <option value="12">12</option>
+            <option value="20">20</option>
+          </select>
+
+          <button type="submit" class="button picnic-btn">Throw Dice</button>
+        </form>
+        <div class="dice" id="dice-results"></div>
+        <div class="sum" id="dice-sum"></div>
+      </div>
+    </div>
+    <script>
+      const form = document.getElementById("dice-form");
+      const diceResults = document.getElementById("dice-results");
+      const diceSum = document.getElementById("dice-sum");
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        const numDice = Math.max(
+          1,
+          Math.min(10, parseInt(document.getElementById("dice").value, 10) || 1)
+        );
+        const sides = parseInt(document.getElementById("sides").value, 10);
+
+        const rolls = [];
+        let sum = 0;
+        for (let i = 0; i < numDice; i++) {
+          const roll = Math.floor(Math.random() * sides) + 1;
+          rolls.push(roll);
+          sum += roll;
+        }
+        diceResults.innerHTML = rolls
+          .map((val) => `<div class="die">${val}</div>`)
+          .join("");
+        diceSum.innerHTML =
+          rolls.length > 1 ? `Sum: <span class="highlight">${sum}</span>` : "";
+      });
+    </script>
+  </body>
+</html>

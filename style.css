@@ -1,3 +1,7 @@
+body {
+  background: #e4f4f1;
+  min-height: 100vh;
+}
 .container {
   min-height: 100vh;
   display: flex;
@@ -5,51 +9,40 @@
   justify-content: center;
   align-items: center;
 }
-
-span {
-  font-size: 1rem;
+.logo {
   color: #6b9080;
+  font-size: 1.1rem;
   margin-bottom: 2.5rem;
   letter-spacing: 0.08em;
-  opacity: 0.8;
+  opacity: 0.85;
 }
-
 .mainHeader {
   color: #4a7266;
-  font-size: 2.8rem;
+  font-size: 2.5rem;
   font-weight: 600;
   margin-bottom: 1rem;
+  letter-spacing: 0.01em;
 }
-
 .descriptor {
   color: #567d71;
   font-size: 1.2rem;
-  margin-bottom: 2.5rem;
+  margin-bottom: 2.2rem;
   font-weight: 400;
-  opacity: 0.9;
+  opacity: 0.92;
   text-align: center;
 }
-
+/* Picnic's .button is styled, but add color tweak */
 .button {
-  display: inline-block;
-  padding: 0.9rem 2.2rem;
-  border: none;
-  border-radius: 12px;
-  background: #c7e3db;
-  color: #355c4f;
+  background: #c7e3db !important;
+  color: #355c4f !important;
   font-size: 1.15rem;
-  cursor: pointer;
-  transition: background 0.2s;
-  box-shadow: 0 2px 12px rgba(100, 120, 110, 0.04);
-  font-family: inherit;
+  border-radius: 12px !important;
   font-weight: 500;
-  opacity: 0.96;
-  text-decoration: none;
-  text-align: center;
+  padding: 1rem 2.3rem;
+  margin-top: 0.5rem;
+  box-shadow: 0 2px 12px rgba(100, 120, 110, 0.04);
 }
-
 .button:hover,
 .button:focus {
-  background: #b6dad2;
-  opacity: 1;
+  background: #b6dad2 !important;
 }
